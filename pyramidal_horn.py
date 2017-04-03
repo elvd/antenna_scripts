@@ -16,14 +16,14 @@ wvg_info = {'wr28': {'a': 7.112e-3, 'b': 3.556e-3, 'freq': 32.56e9},
             'wr01': {'a': 254e-6, 'b': 127e-6, 'freq': 908.3e9},
             'wr90': {'a': 2.286e-2, 'b': 1.016e-2, 'freq': 11.0e9}}
 
-wvg = 'wr10'
+wvg = 'wr01'
 
 gain_dB = 20.0  # in dB
 gain = np.power(10, gain_dB/10)
 wavelength = scipy.constants.c / wvg_info[wvg]['freq']
 
 #%%
-#  Parameters computerd using algorithm in Antenna Engneering Handbook
+#  Parameters computed using algorithm in Antenna Engneering Handbook
 
 g_1 = 2 * np.pi
 alpha_1 = 3 * wavelength
@@ -62,11 +62,11 @@ Le = np.power(b, 2) / beta_1
 h_Lh = Lh * (1 - wvg_info[wvg]['a'] / a)
 h_Le = Le * (1 - wvg_info[wvg]['b'] / b)
 
+
 #%%
 #  Parameters computed using algorithm in Antenna Theory
 
 chi_initial = gain / (2 * np.pi * np.sqrt(2 * np.pi))
-#  chi_initial = 6.0714397156528443
 
 
 def right_side_func(chi):
