@@ -190,7 +190,7 @@ def calc_effect_dielectric_cover(subst_h, subst_er, cover_h, cover_er, air_er,
 
     subst_er_eff = calc_er_eff(effective_width, er_mimic, subst_h)
 
-    delta_patch_l_approx = calc_delta_l_approx(subst_er, subst_h,
+    delta_patch_l_approx = calc_delta_l_approx(er_mimic, subst_h,
                                                effective_width)
     delta_patch_l_exact = calc_delta_l_exact(er_mimic, subst_h,
                                              effective_width)
@@ -365,6 +365,7 @@ def calc_er_eff(patch_w, subst_er, subst_h):
 def patch_design_initial(freq, subst_er, subst_h):
     # initial guess for patch width
     patch_w = c0 / (2 * freq) * np.sqrt(2 / (subst_er + 1))
+#    patch_w = 5e-3
 
     subst_er_eff = calc_er_eff(patch_w, subst_er, subst_h)
 

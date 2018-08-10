@@ -8,8 +8,11 @@ given the higher frequency and the phase span of the Line standard.
 @author: eenvdo
 """
 
-freq_high = 110.0  # in arbitrary units
-span = 150.0  # in degrees
+freq_high = 6.0  # in arbitrary units
+span = 160.0  # in degrees
 
 freq_centre = freq_high * (90 / (90 + float(span) / 2))
 freq_low = freq_centre * ((90 - float(span)/2) / 90)
+
+print(freq_centre)
+print(freq_low)

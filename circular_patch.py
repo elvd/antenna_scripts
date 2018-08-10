@@ -8,24 +8,24 @@ Created on Thu Jul 12 12:54:08 2018
 import patch_antenna_calculator as pac
 
 
+# for bandwidth calculations
 VSWR = 2
 
 # center frequency
-freq = 30.0  # centre frequency in GHz
+freq = 16.0  # centre frequency in GHz
 freq *= 1e9  # convert to Hz
 lambda_0 = pac.c0 / freq  # corresponding wavelength in m
 
 # substrate parameters
-subst_h = 780  # substrate thickness in um
+subst_h = 50.0  # substrate thickness in um
 subst_h *= 1e-6  # convert to base units
-subst_er = 2.98  # relative permittivity
+subst_er = 3.5  # relative permittivity
 subst_ur = 1  # relative permeability
-subst_tand = 0.0027  # loss tangent
+subst_tand = 0.008  # loss tangent
 
 # conductor parameters
-metal_cond = 5.88e7  # metal conductivity in S/m
-metal_ur = 1.0  # metal relative permeability
-
+metal_cond = 4.1e7  # metal conductivity in S/m
+metal_ur = 0.99996  # metal relative permeability
 
 circ_patch = pac.circ_patch_design(freq, subst_er, subst_h)
 circ_patch_radius = circ_patch['radius'].value
@@ -43,7 +43,7 @@ print('Results for circular patch')
 print('-'*20)
 print('Design parameters')
 print('-'*20)
-print('Centre frequency, GHz: {:.3f}'.format(freq))
+print('Centre frequency, GHz: {:.3f}'.format(freq/1e9))
 print('Substrate thickness, um: {:.3f}'.format(subst_h))
 print('Substrate Dk: {:.3f}'.format(subst_er))
 print('-'*20)
